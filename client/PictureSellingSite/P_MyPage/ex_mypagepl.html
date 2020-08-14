@@ -1,0 +1,19 @@
+<template name ="ex_mypagepl">
+    {{> ex_navbar}}
+    <div id="ex_mypagepl">
+      <div class="container">
+        <div class="row" style="margin-top: 2rem;">
+
+     {{#each pic}}
+        {{#with post}}
+    <div class="col-md-4" data-automation="mosaic-grid">
+      <div class="mb-4 shadow-sm">
+        <a href="/ex_modalpicture/{{_id}}"><img src="{{link}}" alt="" class="card-img-top" style="height: 250px;"></a>
+      </div>
+    </div>
+      {{/with}}
+    {{/each}}
+    </div>
+    </div>
+    </div>
+</template>

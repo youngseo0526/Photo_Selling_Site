@@ -1,0 +1,53 @@
+<template name="ex_carousel">  
+  {{> ex_navbar}}
+  <div id="ex_carousel">
+    
+    <!-- 검색 창 -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/examples/background.jpeg" alt="" class="bd-placeholder-img" width="100%" height="100%">
+          <div class="container">
+            <div class="carousel-caption text-left">
+              <div class="search__container">
+                <p class="search__title">
+                    사진을 검색하세요
+                </p>
+                <input id="inp-search" class="search__input" type="text" placeholder="Search">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="container">
+      <div class="row">
+
+      <!-- 검색 결과로 나온 사진들이 list됨 -->
+        {{#each tags}}
+          <div class="col-md-4">
+            <div class="mb-4 shadow-sm">
+              <button id="mybtn" value="{{link}}" style="border-color: transparent; background-color: transparent;">
+                <img src="{{link}}" alt="" class="card-img-top" style="height: 250px;">
+              </button>
+            </div>
+          </div>
+          
+          <!-- modal창에 불러올 정보들이 each tags안에 있기 때문에 일부러 반복문 안에 넣음 -->
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <img src="{{modal_picture}}" alt="" class="card-img-top" style="display: block; margin: 0px auto;">
+              <div style="display: table-cell;">
+                <button id="myclose" class="btn btn-primary" style="width:49%; margin-right: 0.27rem; margin-top: 1rem; background-color: grey; border-color: transparent; color: white;">취소</button>
+                <button onClick="location.href='/ex_modalpicture/{{link_id}}'" class="btn btn-primary" style="width:49%; margin-left:0.27rem; margin-top: 1rem; background-color: rgb(59, 116, 221); border-color: transparent; color: white;">상세보기</button>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,64 @@
+<template name="ex_modalpicture">
+    {{> ex_navbar}}
+    {{#with board}}
+    
+    <!-- 사진 보여지는 부분 -->
+    <div style="display: table; width: 50%; float: left; text-align: center;">
+
+        <div style="display: table-cell; vertical-align: middle;">
+            <div>
+                <div style="margin-top: 25%; margin-bottom: 25%;"></div>
+                <img src="{{link}}" style="max-width: 500px; height: auto; vertical-align: middle;" alt="" class="card-img-top">
+            </div>
+        </div>
+    </div>
+     
+    <!-- 사진 정보 보여지는 부분 -->
+    <div style="width : 50%; float: right;" class="input" id="ex_modalpicture">
+        
+        <div style="margin-top: 6rem;">
+        </div>
+
+        <label style="font-size: large;">이름</label>
+        <div>{{name}}</div><br>
+        <label style="font-size: large;">태그</label>      
+        <div>{{tags}}</div><br>
+        <label style="font-size: large;">가격</label>
+        <div>{{price}}</div><br>
+        <label style="font-size: large;">촬영 장소</label>
+        <div>{{place}}</div><br>
+        <label style="font-size: large;">사진 설명</label>
+        <div>{{introduce}}</div><br>
+        <label style="font-size: large;">사용자 정보</label>
+        <div>{{userInfo}}</div><br>
+
+        {{#if currentUser}}
+        <div style="float: right; margin-right: 20%;">
+            <button id="btn-cart" class="btn btn-primary" stlye="width:100px" style="background-color: rgb(168, 74, 231); border-color: transparent; color: white;">장바구니에 담기</button>
+            <button id="btn-buy" class="btn btn-primary" stlye="width:100px" style="background-color: #00b992; border-color: transparent; color: white;">구매하기</button>
+            <button id="btn-back" onClick="location.href='/'" class="btn btn-primary" stlye="width:100px" style="background-color: grey; border-color: transparent; color: white;">뒤로가기</button>
+        </div>
+        {{else}}
+        <div style="float: right; margin-right: 20%;">
+            <!-- <button id="btn-cart" class="btn btn-primary" stlye="width:100px" style="background-color: rgb(168, 74, 231); border-color: transparent; color: white;">장바구니에 담기</button>
+            <button id="btn-buy" class="btn btn-primary" stlye="width:100px" style="background-color: #00b992; border-color: transparent; color: white;">구매하기</button> -->
+            <button id="btn-back" onClick="location.href='/'" class="btn btn-primary" stlye="width:100px" style="background-color: grey; border-color: transparent; color: white;">뒤로가기</button>
+        </div>
+        {{/if}}
+
+        <!-- modal 팝업 창 -->
+        <div id="myModal" class="modal">
+            <div class="modal-content" style="text-align: center;">
+              <div style="font-weight: 600; margin-top: 20px; font-size: 35px;">구매하시겠습니까?</div>
+              <div style="margin-top: 15px; font-size: 20px;">현재 잔액: {{currentcash}}</div>
+              <div style="font-size: 20px;">사진 가격: {{price}}</div>
+              <div style="display: table-cell; margin-bottom: 10px;">
+                <button id="btn-buyinmodal" class="btn btn-primary" style="width:20%; margin-left:0.27rem; margin-top: 1rem; background-color: rgb(59, 116, 221); border-color: transparent; color: white; margin-right: 0.5rem;">구매</button>
+                <button id="myclose" class="btn btn-primary" style="width:20%; margin-right: 0.27rem; margin-top: 1rem; background-color: grey; border-color: transparent; color: white; margin-left: 0.5rem">취소</button>
+              </div>
+            </div>
+        </div>
+    
+    </div>
+    {{/with}}
+  </template>

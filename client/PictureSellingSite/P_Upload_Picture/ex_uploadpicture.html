@@ -1,0 +1,108 @@
+<template name="ex_uploadpicture">
+  <script>
+    function onlyNumber(event){
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+          return;
+      else
+          return false;
+    }
+   
+    function removeChar(event) {
+      event = event || window.event;
+      var keyID = (event.which) ? event.which : event.keyCode;
+      if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) 
+          return;
+      else
+          event.target.value = event.target.value.replace(/[^0-9]/g, "");
+    }
+
+    function test1(obj){
+        var a = $('#inp-name').val().replace(/ /gi, '');
+        $('#inp-name').val(a);
+    }
+
+    function test2(obj){
+        var b = $('#inp-tag').val().replace(/ /gi, '');
+        $('#inp-tag').val(b);
+    }
+
+    function test3(obj){
+        var c = $('#inp-place').val().replace(/ /gi, '');
+        $('#inp-place').val(c);
+    }
+
+    function test4(obj){
+        var d = $('#inp-introduce').val().replace(/ /gi, '');
+        $('#inp-introduce').val(d);
+    }
+
+  </script>
+  
+  
+  
+  {{> ex_navbar}}
+
+  <!-- 사진 업로드 부분 -->
+  <div id="ex_file_upload" style="width : 50%; float: left; text-align: center;">
+    <div style="margin-top: 6rem;">
+    </div>
+
+    <form class = "box" style="align-content: center;">
+    <div class="container">
+      <!-- 사진 미리보기 부분 (비어있는 부분 만들어줬기 때문에 그 자리에 사진 미리보기가 들어가는 것임) -->
+      <div id = "preview">
+
+      </div>
+      <p>
+        <div class="input-group mb-3">
+          <input type="file" id="inp-file"/>
+        </div>
+      </p>
+    </div>
+  </form>
+  </div>
+
+    <!-- 상세정보 입력창 부분 -->
+    <div style="width : 50%; float: right;" class="input">
+
+      <!-- 여백 -->
+      <div style="margin-top: 6rem;">
+      </div>
+
+    <!-- 사진 상세정보 입력창 -->
+    <div class="form-group">
+    <label for="name">사진 이름</label>
+    <input class="form-control" style="width : 70%;" onkeyup="test1(this);" type="text" id="inp-name" placeholder="이름을 입력하세요"/>
+  </div>
+    
+    <!-- 태그 입력 및 입력한 태그들이 each문으로 돌아감 -->
+    <div class="form-group">
+    <label for="tag">태그</label>
+    {{#each tag_list}}
+      <span style="background-color: #00b992;">{{name}}<button id="btn-remove-tag" value={{name}} style="background-color: transparent; border-color: transparent;">X</button></span>
+    {{/each}} <br>
+    <input class="form-control"  style="width : 70%;" onkeyup="test2(this);" id="inp-tag" type="text" placeholder="태그를 입력하세요(공백 제외)"/>
+    <button id="btn-save-tag"  class="btn btn-primary" >태그등록</button><br>
+  </div>
+
+  <div class="form-group">
+    <label for="price">사진 가격</label>
+    <input class="form-control"  style="width : 70%;" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' type="text" id="inp-price" placeholder="가격을 입력하세요"/>
+  </div>
+
+  <div class="form-group">
+    <label for="place">사진 장소</label>
+    <input class="form-control" style="width : 70%;"  onkeyup="test3(this);" type="text" id="inp-place"  placeholder="장소를 입력하세요"/>
+  </div>
+
+  <div class="form-group">
+    <label for="introduce">사진 설명</label>
+    <input class="form-control"  style="width : 90%" onkeyup="test4(this);" type="text" id="inp-introduce"  placeholder="설명을 입력하세요"/>
+  </div>
+    
+    <button id="btn-save" class="btn btn-primary" >등록</button>
+    <button id="btn-back" onClick="location.href='/'" class="btn btn-primary" >뒤로가기</button>
+    </div>
+</template>

@@ -1,0 +1,51 @@
+<template name="ex_mypage">
+  {{> ex_navbar}}
+
+  <div id="ex_pricing">
+
+    <div class="container" style="margin-top: 8rem;">
+    <div class="parent">
+
+      {{#with board}}
+        <div class="first" style="text-align: center; margin-top: 2rem;">
+          <div class="card-body">
+          <h1 class="card-title pricing-card-title" style="font-size: 25px;">업로드한 사진 수</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <a href="/ex_mypagepl/{{_id}}" style="font-size: 40px; font-weight: 600;">{{num_myupload}}</a>
+            <br>
+          </ul>
+          <!-- <button type="button" onClick="location.href='/ex_mypagepl'" class="btn btn-lg btn-block btn-primary">목록</button> -->
+          <!-- <a class="btn btn-primary" href="/ex_mypagepl/{{_id}}">목록</a> -->
+          </div>
+      </div>
+      {{/with}}
+
+      <div class="second" style="text-align: center;">
+        {{#with board}}
+        <div id="ex_post text-center">
+          <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" 
+          onerror="this.src='/examples/default_picture.png'" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;"><br>
+          <a href="mailto:#" style="font-size: 20px;">{{currentUser.emails.[0].address}}</a>
+          <div style="margin-bottom: 1rem;">{{title}}</div>
+          <a href="/ex_mypageposting/{{_id}}" class="btn btn-primary">수정</a>
+        </div>
+        {{/with}}  
+      </div>
+
+      {{#with board}}
+      <div class="third" style="text-align: center; margin-top: 2rem;">
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title" style="font-size: 25px;">구매한 사진 수</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <a href="/ex_mypagepl2/{{_id}}" style="font-size: 40px; font-weight: 600;">{{num_my_pic}}</a>
+          </ul>
+          <!-- <a class="btn btn-primary" href="/ex_mypagepl2/{{_id}}">목록</a> -->
+        </div>
+      </div>
+      {{/with}}
+
+    </div>
+    </div>
+
+</div>
+</template> 

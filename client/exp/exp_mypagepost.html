@@ -1,0 +1,14 @@
+<template name="exp_mypagepost">
+  {{> ex_navbar}}
+  {{#with board}}
+    <div id="ex_post" style="text-align: center; margin-top: 5rem;">
+      
+      <img class="profiles" src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" style="border-radius: 100%; width: 150px; height: 150px;margin-bottom: 1rem;">
+      <h3>{{name}}</h3>
+      <div style="margin-bottom: 1rem;">{{title}}</div>
+      <a href="/exp_mypageposting/{{_id}}" class="btn btn-primary">수정</a>
+
+    </div>
+  {{/with}}
+  {{> ex_footer}}
+</template>

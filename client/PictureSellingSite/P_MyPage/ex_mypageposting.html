@@ -1,0 +1,40 @@
+<template name="ex_mypageposting">
+  <div id="ex_posting">
+    <section class="jumbotron" style="background-color: white;">
+      <div class="container">
+        <h1 class="text-center">사용자 정보 수정</h1>
+        {{#with post}}
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">이메일 주소</label>
+            <input class="form-control" type="email" value={{email}} id="inp-email" placeholder="이메일을 입력하세요"/>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">기존 비밀번호</label>
+            <input type="oldpassword" class="form-control" id="inp-oldpassword" placeholder="기존 비밀번호를 입력하세요">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">새 비밀번호</label>
+            <input type="newpassword" class="form-control" id="inp-newpassword" placeholder="새로운 비밀번호를 입력하세요">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPasswor2">새 비밀번호 확인</label>
+            <input id="inp-passwordconfirm" type="passwordconfirm" class="form-control mb-1" placeholder="새로운 비밀번호를 입력하세요" required>    
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPR">자기소개</label>
+            <input class="form-control" value="{{title}}" type="text" id="inp-title" placeholder="자기소개를 입력하세요"/>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputFile"> 프로필 사진</label>
+            <input type="file" id="inp-file">
+          </div>
+        </form>
+        {{/with}}
+        <p>
+          <a id="btn-save" href="#" class="btn btn-primary" >저장</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</template>

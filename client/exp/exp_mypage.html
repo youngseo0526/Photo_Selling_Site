@@ -1,0 +1,29 @@
+<template name="exp_mypage">
+    {{> ex_navbar}}
+    <div id="ex_posts" class="container">
+      <section class="jumbotron text-center" style="background-color: white;">
+        <div class="container">
+          <h1>게시판 샘플</h1>
+          <p class="lead text-muted">게시판 작성 버튼으로 게시판을 작성 할 수 있는 페이지로 이동 합니다. <br>로그인 된 사용자만 게시판을 지울 수 있도록 하려면 <br>ex_login_navbar 혹은 ex_login_custom 예제를 참고 하세요.</p>
+          <p>
+            <a href="/exp_mypageposting/newPosting" class="btn btn-primary">게시판 작성</a>
+          </p>
+        </div>
+      </section>
+      <div class="row">
+        <!-- {{#if currentUser}} -->
+          {{#each boards}}
+            <div>
+              <img src="http://localhost:3000/cdn/storage/db_files/{{link}}/original/{{link}}.png" style="max-width: 100px; height: 100px" alt="" class="card-img-top">
+              <h1><a href="/exp_mypagepost/{{_id}}">{{name}}</a></h1>
+              <h6>{{title}}</h6>
+              <button id="btn-remove" class="close" style="float: left;">
+              <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {{/each}}
+        <!-- {{/if}} -->
+      </div>
+    </div>
+    {{> ex_footer}}
+  </template>
